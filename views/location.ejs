@@ -1,0 +1,44 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.hero %>" alt="Custom window treatments in <%= a.name %>" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <span class="eyebrow"><%= a.borough %>, New York</span>
+    <h1>Custom Window Treatments in <em><%= a.name %></em></h1>
+    <p>Shades, blinds, drapery and motorization for <%= a.name %> homes and businesses. Free in-home consultation and free installation.</p>
+    <div class="btn-row" style="margin-top:26px"><a href="#consult" class="btn btn-white">Book Free Consultation</a><a href="tel:<%= site.phoneTel %>" class="btn btn-ghost" data-track="call-hero">Call <%= site.phone %></a></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap feature-grid">
+    <div class="prose">
+      <h2>Window treatments made for <%= a.name %> homes</h2>
+      <p><%= a.housing %></p>
+      <p><%= a.light %></p>
+      <div class="tip"><strong>Local knowledge</strong>Our designers work throughout <%= a.name %>, around <%= a.landmarks %>. We coordinate with doormen, supers and co-op and condo boards on certificates of insurance, elevator bookings and work hours so installation day is easy.</div>
+      <h2>Popular in <%= a.name %></h2>
+      <div class="cards c2" style="margin-top:20px">
+        <% services.forEach(s => { %>
+        <a class="card" href="<%= a.url %><%= s.key %>/"><div class="img"><img src="<%= s.img %>" alt="<%= s.name %> <%= a.name %>" loading="lazy" class="ph"></div><div class="body"><h3><%= s.name %> in <%= a.name %></h3><p><%= s.angle.charAt(0).toUpperCase() + s.angle.slice(1) %>.</p><span class="more">Learn more <%- include('partials/icon', { name: 'arrow' }) %></span></div></a>
+        <% }) %>
+      </div>
+      <h2>Serving ZIP codes</h2>
+      <p><%= a.zips.join(', ') %> and the surrounding blocks of <%= a.name %>, <%= a.borough %>.</p>
+    </div>
+    <aside class="sticky"><%- include('partials/lead-form', { formTitle: 'Free Consultation in ' + a.name, areaName: a.name, showMessage: false, formName: 'Location – ' + a.name }) %></aside>
+  </div>
+</section>
+<section class="sec sec-blush">
+  <div class="wrap">
+    <div class="h-center"><span class="kicker">How It Works</span><h2 class="h-sec">Our Streamlined Process</h2><span class="bar"></span></div>
+    <div class="process"><% site.process.forEach((s, i) => { %><div class="step"><div class="img"><img src="<%= site.img[s.key] %>" alt="<%= s.title %>" loading="lazy" class="ph"></div><div class="body"><span class="num">0<%= i + 1 %></span><h3><%= s.title %></h3><p><%= s.text %></p></div></div><% }) %></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap"><div class="h-center"><h2 class="h-sec"><%= a.name %> FAQs</h2><span class="bar"></span></div><%- include('partials/faq', { faqs }) %>
+  <% if (nearby.length) { %><div style="text-align:center;margin-top:50px"><p class="boro">Nearby neighborhoods</p><div class="chips" style="justify-content:center"><% nearby.forEach(n => { %><a class="chip" href="<%= n.url %>"><%= n.name %></a><% }) %></div></div><% } %>
+  </div>
+</section>
+<%- include('partials/cta', { areaName: a.name }) %>
+<%- include('partials/footer') %>

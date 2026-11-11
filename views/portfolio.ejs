@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.evoke %>" alt="" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>Our <em>Portfolio</em></h1>
+    <p>Explore our latest design and trend-proof pieces for every room.</p>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <div class="gallery">
+      <% [
+        [site.img.evoke,'Designer banded shades — Evoke'],[site.img.coastalOpen,'Designer banded shades — Coastal (open)'],[site.img.coastalClosed,'Designer banded shades — Coastal (closed)'],[site.img.bedroomShade,'Blackout shades for the bedroom'],
+        [site.img.roller,'Roller & solar shades'],[site.img.motor,'Motorized Silhouette® in the kitchen'],[site.img.roman,'Roman shades in the dining room'],[site.img.blinds,'Wood blinds'],
+        [site.img.hd,'Hunter Douglas Duolite®'],[site.img.drapery,'Custom drapery'],[site.img.kitchen,'Kitchen wood blinds'],[site.img.panels,'Drapery panels'],
+        [site.img.positano,'Motorized roller shades'],[site.img.silhouette,'Silhouette® in a kids room'],[site.img.motorDrapes,'Motorized drapes for tall windows'],[site.img.vignette,'Vignette® Roman shades'],
+        [site.img.duette,'Duette® honeycomb shades'],[site.img.intro,'Duette® PowerView® living room'],[site.img.fabricChair,'Designer fabrics'],[site.img.fabricRolls,'Fabric selection']
+      ].forEach(([im, c]) => { %><figure><img src="<%= im %>" alt="<%= c %> NYC" loading="lazy" class="ph"><figcaption><%= c %></figcaption></figure><% }) %>
+    </div>
+    <p style="text-align:center;margin-top:30px;color:var(--muted)">Follow our latest installs on <a href="<%= site.social.instagram %>" target="_blank" rel="noopener">Instagram</a> and <a href="<%= site.social.pinterest %>" target="_blank" rel="noopener">Pinterest</a>.</p>
+  </div>
+</section>
+<%- include('partials/cta') %>
+<%- include('partials/footer') %>

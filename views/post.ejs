@@ -1,0 +1,17 @@
+<%- include('partials/head', { ogImage: post.image || site.img.drapery }) %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= post.image || site.img.drapery %>" alt="" class="ph">
+  <div class="wrap"><%- include('partials/crumbs') %><span class="eyebrow"><%= meta.tag %></span><h1><%= post.title || meta.title %></h1>
+  <% if (post.date) { %><p><%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></p><% } %></div>
+</section>
+<section class="sec">
+  <div class="wrap feature-grid">
+    <article class="post-body prose"><%- post.html %></article>
+    <aside class="sticky"><%- include('partials/lead-form', { formTitle: 'Free Design Consultation', formSub: 'Get expert advice for your windows. Installation is always free.', showMessage: false, formName: 'Blog – ' + meta.slug }) %></aside>
+  </div>
+</section>
+<section class="sec sec-blush"><div class="wrap"><div class="h-center"><h2 class="h-sec">More From Our Blogs</h2><span class="bar"></span></div><div class="cards">
+<% more.forEach((p, i) => { %><a class="card" href="<%= p.url %>"><div class="body"><span class="eyebrow"><%= p.tag %></span><h3><%= p.title %></h3><p><%= p.excerpt %></p><span class="more">Read more <%- include('partials/icon', { name: 'arrow' }) %></span></div></a><% }) %>
+</div></div></section>
+<%- include('partials/footer') %>

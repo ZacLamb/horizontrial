@@ -1,0 +1,32 @@
+<% const fid = 'f' + Math.random().toString(36).slice(2, 7);
+   const heading = typeof formTitle !== 'undefined' ? formTitle : 'Book Your Free Consultation';
+   const sub = typeof formSub !== 'undefined' ? formSub : 'A designer comes to you with samples, measures and quotes. Installation is always free.';
+   const preInterest = typeof interest !== 'undefined' ? interest : '';
+   const preArea = typeof areaName !== 'undefined' ? areaName : '';
+   const preType = typeof projectType !== 'undefined' ? projectType : 'Residential';
+   const opts = ['Motorized Shades','Roller Shades','Solar Shades','Roman Shades','Drapery','Hunter Douglas','Wood / Metal Blinds','Commercial project','Not sure yet'];
+%>
+<form class="form-card lead-form" action="/api/lead" method="post" id="<%= fid %>" novalidate>
+  <h3><%= heading %></h3>
+  <p class="sub"><%= sub %></p>
+  <div class="form-grid">
+    <div class="field full"><label for="<%= fid %>-n">Full name *</label><input id="<%= fid %>-n" name="name" autocomplete="name" required></div>
+    <div class="field"><label for="<%= fid %>-p">Phone *</label><input id="<%= fid %>-p" name="phone" type="tel" autocomplete="tel" required></div>
+    <div class="field"><label for="<%= fid %>-e">Email</label><input id="<%= fid %>-e" name="email" type="email" autocomplete="email"></div>
+    <div class="field"><label for="<%= fid %>-i">Interested in</label>
+      <select id="<%= fid %>-i" name="interest"><option value="">Select a product</option><% opts.forEach(o => { %><option<%= o === preInterest ? ' selected' : '' %>><%= o %></option><% }) %></select></div>
+    <div class="field"><label for="<%= fid %>-t">Project type</label>
+      <select id="<%= fid %>-t" name="project_type"><% ['Residential','Commercial','Designer / Architect','Property manager'].forEach(o => { %><option<%= o === preType ? ' selected' : '' %>><%= o %></option><% }) %></select></div>
+    <div class="field"><label for="<%= fid %>-a">Neighborhood or ZIP</label><input id="<%= fid %>-a" name="neighborhood" value="<%= preArea %>" autocomplete="postal-code"></div>
+    <div class="field"><label for="<%= fid %>-w">Timeline</label>
+      <select id="<%= fid %>-w" name="timeline"><% ['As soon as possible','Within 1 month','1–3 months','Just researching'].forEach(o => { %><option><%= o %></option><% }) %></select></div>
+    <% if (typeof showMessage === 'undefined' || showMessage) { %><div class="field full"><label for="<%= fid %>-m">Tell us about your windows</label><textarea id="<%= fid %>-m" name="message" placeholder="Rooms, number of windows, anything we should know"></textarea></div><% } %>
+  </div>
+  <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <input type="hidden" name="form_name" value="<%= typeof formName !== 'undefined' ? formName : 'Website consultation' %>">
+  <input type="hidden" name="page" value="<%= path %>">
+  <% ['landing_page','referrer','utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'].forEach(k => { %><input type="hidden" name="<%= k %>"><% }) %>
+  <button class="btn btn-red" type="submit">Request My Free Consultation</button>
+  <div class="form-msg" role="alert"></div>
+  <p class="form-fine">Or call <a href="tel:<%= site.phoneTel %>"><%= site.phone %></a>. We respond within one business day. No spam, ever.</p>
+</form>

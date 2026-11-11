@@ -1,0 +1,8 @@
+<section class="sec-sm">
+  <div class="wrap">
+    <h2 class="h-sec h-center" style="font-weight:500;margin-bottom:30px">Our Promise</h2>
+    <div class="promise">
+      <% site.promise.forEach(p => { %><div><h3><%- include('icon', { name: p.icon }) %><%= p.title %></h3><p><%= p.text %></p></div><% }) %>
+    </div>
+  </div>
+</section>

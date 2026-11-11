@@ -1,0 +1,39 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= cat.img %>" alt="<%= cat.title %>" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1><%= cat.title %></h1>
+    <p><%= cat.lede %></p>
+    <div class="btn-row" style="margin-top:26px"><a href="/bookappointment/" class="btn btn-white">Schedule Free Consultation</a><a href="tel:<%= site.phoneTel %>" class="btn btn-ghost" data-track="call-hero">Call <%= site.phone %></a></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <div class="h-center" style="max-width:820px;margin:0 auto 44px">
+      <span class="kicker">Explore</span><h2 class="h-sec"><%= cat.nav %> Collection</h2><span class="bar"></span>
+      <p class="lead"><%= cat.intro %></p>
+    </div>
+    <div class="cards <%= cat.items.length === 4 ? 'c4' : '' %>">
+      <% cat.items.forEach(p => { %>
+      <a class="card" href="<%= p.url %>"><div class="img"><img src="<%= p.img %>" alt="<%= p.title %> NYC" loading="lazy" class="ph"></div>
+        <div class="body"><h3><%= p.title %></h3><p><%= p.lede %></p><span class="more">Explore <%= p.title %> <%- include('partials/icon', { name: 'arrow' }) %></span></div></a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<section class="sec sec-blush">
+  <div class="wrap">
+    <div class="h-center"><span class="kicker">How It Works</span><h2 class="h-sec">From Samples to Installed</h2><span class="bar"></span></div>
+    <div class="process">
+      <% site.process.forEach((s, i) => { %><div class="step"><div class="img"><img src="<%= site.img[s.key] %>" alt="<%= s.title %>" loading="lazy" class="ph"></div><div class="body"><span class="num">0<%= i + 1 %></span><h3><%= s.title %></h3><p><%= s.text %></p></div></div><% }) %>
+    </div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap"><div class="h-center"><h2 class="h-sec">Frequently Asked Questions</h2><span class="bar"></span></div><%- include('partials/faq', { faqs }) %></div>
+</section>
+<%- include('partials/cta', { interest: '' }) %>
+<%- include('partials/promise') %>
+<%- include('partials/footer') %>

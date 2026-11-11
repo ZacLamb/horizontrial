@@ -1,0 +1,17 @@
+<section class="cta-band" id="consult">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="color:var(--gold)">Free Design Help</span>
+      <h2><%- typeof ctaTitle !== 'undefined' ? ctaTitle : 'Don&rsquo;t know where to begin? <em>We will help you.</em>' %></h2>
+      <p>Book a complimentary in-home consultation. A Horizon designer brings samples to you, measures every window and gives you a clear quote and timeline.</p>
+      <ul class="check">
+        <li>Free in-home consultation &amp; measuring</li>
+        <li>Free professional installation on every order</li>
+        <li>Two-week timelines on most products</li>
+        <li>Limited lifetime warranty + 1 year of free service</li>
+      </ul>
+      <a href="tel:<%= site.phoneTel %>" class="btn btn-ghost" data-track="call-cta">Call <%= site.phone %></a>
+    </div>
+    <%- include('lead-form', locals) %>
+  </div>
+</section>

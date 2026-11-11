@@ -1,0 +1,188 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<section class="hero">
+  <img src="<%= site.img.hero %>" alt="Luxury New York living room with custom drapery and shades by Horizon Window Treatments" fetchpriority="high" class="ph">
+  <div class="hero-inner">
+    <h1>Custom Window Treatments. <em>Made Simple.</em></h1>
+    <p>NYC&rsquo;s custom window treatment specialists. Premium shades, motorized blinds and bespoke drapery for New York&rsquo;s finest homes.</p>
+    <div class="btn-row">
+      <a href="/bookappointment/" class="btn btn-white">Schedule Consultation</a>
+      <a href="/portfolio/" class="btn btn-ghost">View Our Portfolio</a>
+    </div>
+    <div class="trust">
+      <span><b><%= new Date().getFullYear() - site.founded %></b> Years in NYC</span>
+      <span><b>Free</b> In-home consultation</span>
+      <span><b>Free</b> Installation</span>
+      <span><b>~2 wk</b> Most products</span>
+    </div>
+  </div>
+</section>
+
+<!-- An easier way to buy -->
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <span class="kicker">An Easier Way to Buy</span>
+      <h2 class="h-sec">Window Treatments in NYC</h2>
+      <span class="bar"></span>
+      <p>At Horizon we&rsquo;ve spent more than 25 years perfecting a streamlined, high-end experience for buying window treatments in New York City.</p>
+      <p>One designer guides you from samples to installation. We measure, we fabricate in Brooklyn, and we install &mdash; free. Rated highest among our competition for service and quality, we&rsquo;re confident you&rsquo;ll love us.</p>
+      <div class="btn-row"><a href="/bookappointment/" class="btn btn-outline">FREE Consultation!</a><a href="tel:<%= site.phoneTel %>" class="btn btn-outline" data-track="call-intro">Call <%= site.phone %></a></div>
+    </div>
+    <div class="split-img"><img src="<%= site.img.intro %>" alt="Window treatments in NYC living room with honeycomb shades" loading="lazy" class="ph"></div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="sec" style="padding-top:20px">
+  <div class="wrap">
+    <div class="h-center">
+      <span class="kicker">Explore Our</span>
+      <h2 class="h-sec">Window Treatment Services in NYC</h2>
+      <span class="bar"></span>
+    </div>
+    <div class="tiles">
+      <% [
+        ['/roller-shades/', 'Roller & Solar Shades', site.img.roller],
+        ['/motorization/', 'Motorization', site.img.motor],
+        ['/roman-shades/', 'Roman Shades', site.img.roman],
+        ['/wood-blinds/', 'Metal & Wood Blinds', site.img.blinds],
+        ['/hunter-douglas/', 'Hunter Douglas', site.img.hd],
+        ['/drapery/', 'Drapery', site.img.drapery]
+      ].forEach(([u, t, im]) => { %>
+      <a class="tile" href="<%= u %>"><div class="img"><img src="<%= im %>" alt="<%= t %> NYC" loading="lazy" class="ph"></div><h3><%= t %></h3></a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Free design help -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="help">
+      <img src="<%= site.img.fabricRolls %>" alt="Designer selecting shade fabric samples" loading="lazy" class="ph">
+      <div class="help-box">
+        <h2>Free Design Help</h2>
+        <p>Don&rsquo;t know where to begin? We will help you! Our designers bring hundreds of samples to your home and recommend what works for every room.</p>
+        <a href="/bookappointment/" class="btn btn-outline">Book An Appointment Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- We're Horizon -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap split">
+    <div>
+      <h2 class="h-sec" style="text-transform:none;font-weight:500">We&rsquo;re <b style="text-transform:uppercase;font-weight:700">Horizon Window Treatments</b></h2>
+      <span class="bar"></span>
+      <p>Since 1999, Horizon has carried the highest quality products from custom window treatment brands such as <span class="brands">Hunter Douglas, Somfy, Lutron, Carole Fabrics, Graber</span> and more.</p>
+      <p>Our Chelsea showroom is made for anyone who needs to see and feel fabrics, materials and motorization options before deciding.</p>
+      <p>As part of our free in-home consultation, one of our design experts meets with you, brings samples to choose from, takes precise measurements and provides a quote. As an award-winning window treatment company in NYC, quality and professionalism is our guarantee.</p>
+      <div class="btn-row"><a href="/contact-us/" class="btn btn-black">Contact Us</a><a href="/about-us/" class="btn btn-outline">About Horizon</a></div>
+    </div>
+    <div class="split-img"><img src="<%= site.img.kitchen %>" alt="Stylish kitchen wood blinds in NYC" loading="lazy" class="ph"></div>
+  </div>
+</section>
+
+<!-- Find inspiration -->
+<section class="sec sec-blush">
+  <div class="wrap">
+    <div class="h-center">
+      <h2 class="h-sec" style="font-weight:500;font-size:clamp(28px,3.6vw,42px)">Find Inspiration</h2>
+      <p class="lead" style="margin:10px 0 24px">Explore our latest design and trend-proof pieces for every room</p>
+      <a href="/portfolio/" class="btn btn-black btn-sm" style="margin-bottom:40px">Our Portfolio</a>
+    </div>
+    <div class="gallery">
+      <% [
+        [site.img.evoke, 'Designer banded shades — Evoke'],
+        [site.img.coastalOpen, 'Designer banded shades — Coastal'],
+        [site.img.bedroomShade, 'Blackout roller shades'],
+        [site.img.silhouette, 'Silhouette® shadings'],
+        [site.img.panels, 'Custom drapery panels'],
+        [site.img.positano, 'Motorized solar shades'],
+        [site.img.motorDrapes, 'Motorized drapes'],
+        [site.img.vignette, 'Roman shades with Duolite®']
+      ].forEach(([im, c]) => { %>
+      <a href="/portfolio/"><img src="<%= im %>" alt="<%= c %> in NYC" loading="lazy" class="ph"><figcaption><%= c %></figcaption></a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="sec">
+  <div class="wrap">
+    <div class="h-center">
+      <span class="kicker">How It Works</span>
+      <h2 class="h-sec">Our Streamlined Process</h2>
+      <span class="bar"></span>
+    </div>
+    <div class="process">
+      <% site.process.forEach((s, i) => { %>
+      <div class="step"><div class="img"><img src="<%= site.img[s.key] %>" alt="<%= s.title %>" loading="lazy" class="ph"></div>
+        <div class="body"><span class="num">0<%= i + 1 %></span><h3><%= s.title %></h3><p><%= s.text %></p></div></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Best in NYC -->
+<section class="sec-sm">
+  <div class="wrap">
+    <div class="best">
+      <h2>Best Custom Window Treatments in NYC</h2>
+      <h3>Serving NYC since 1999</h3>
+      <ul>
+        <li><b>Trusted</b> pros for custom window treatments</li>
+        <li><b>Custom</b> curtains, shades, drapes, shutters or blinds</li>
+        <li><b>Expert</b> upgrades to replace outdated window treatments</li>
+        <li><b>Modern</b> + motorized options that elevate the space and last</li>
+        <li><b>Tailored</b> solutions for corporate and small business needs</li>
+      </ul>
+      <a href="/bookappointment/" class="btn btn-black">Book a Free Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- Residential / commercial split -->
+<section class="sec">
+  <div class="wrap">
+    <div class="h-center"><span class="kicker">Who We Help</span><h2 class="h-sec">Homes, Designers &amp; Businesses</h2><span class="bar"></span></div>
+    <div class="cards">
+      <a class="card" href="/bookappointment/"><div class="img"><img src="<%= site.img.bedroomShade %>" alt="Residential window treatments" loading="lazy" class="ph"></div><div class="body"><h3>Homeowners</h3><p>Co-ops, condos, brownstones and lofts. Book a free in-home consultation and we handle everything.</p><span class="more">Book a consultation <%- include('partials/icon', { name: 'arrow' }) %></span></div></a>
+      <a class="card" href="/contact-us/"><div class="img"><img src="<%= site.img.fabricChair %>" alt="Designer fabric selection" loading="lazy" class="ph"></div><div class="body"><h3>Designers &amp; Architects</h3><p>Specifications, fabric sourcing, COM and coordinated installs that keep your project on schedule.</p><span class="more">Talk to our trade team <%- include('partials/icon', { name: 'arrow' }) %></span></div></a>
+      <a class="card" href="/commercial/"><div class="img"><img src="<%= site.img.hd %>" alt="Commercial office shades" loading="lazy" class="ph"></div><div class="body"><h3>Commercial &amp; Property Managers</h3><p>Offices, hospitality and multifamily. Multi-unit measuring, consistent specs and after-hours installation.</p><span class="more">Commercial projects <%- include('partials/icon', { name: 'arrow' }) %></span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="sec sec-blush">
+  <div class="wrap">
+    <div class="h-center"><span class="kicker">Proudly Serving</span><h2 class="h-sec">Manhattan &amp; Brooklyn</h2><span class="bar"></span>
+      <p class="lead" style="max-width:700px;margin:0 auto 36px">From pre-war co-ops on the Upper East Side to Tribeca lofts and Park Slope brownstones, our designers come to you.</p></div>
+    <% ['Manhattan','Brooklyn'].forEach(b => { %>
+      <p class="boro"><%= b %></p>
+      <div class="area-cols" style="margin-bottom:30px"><% neighborhoods.filter(a => a.borough === b).forEach(a => { %><a href="<%= a.url %>" title="Window treatments in <%= a.name %>"><%= a.name %></a><% }) %></div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Blog -->
+<section class="sec">
+  <div class="wrap">
+    <div class="h-center"><span class="kicker">Our Recent</span><h2 class="h-sec">Window Treatment Blogs</h2><span class="bar"></span></div>
+    <div class="cards">
+      <% posts.forEach((p, i) => { %>
+      <a class="card" href="<%= p.url %>"><div class="img"><img src="<%= [site.img.drapery, site.img.roller, site.img.blinds][i % 3] %>" alt="" loading="lazy" class="ph"></div><div class="body"><span class="eyebrow"><%= p.tag %></span><h3><%= p.title %></h3><p><%= p.excerpt %></p><span class="more">Read more <%- include('partials/icon', { name: 'arrow' }) %></span></div></a>
+      <% }) %>
+    </div>
+    <div class="h-center" style="margin-top:34px"><a href="/blogs/" class="btn btn-outline">More From Our Blogs</a></div>
+  </div>
+</section>
+
+<%- include('partials/cta') %>
+<%- include('partials/promise') %>
+<%- include('partials/footer') %>

@@ -1,0 +1,18 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.roller %>" alt="" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>Privacy <em>Policy</em></h1>
+    <p>How Horizon Window Treatments collects and uses information submitted on this website.</p>
+  </div>
+</section>
+<section class="sec"><div class="wrap narrow prose">
+<h2>Information we collect</h2><p>When you submit a form on this website we collect the details you provide, such as your name, phone number, email address, neighborhood and project details, along with the page you submitted from and marketing source information (for example, UTM parameters).</p>
+<h2>How we use it</h2><p>We use this information to respond to your inquiry, schedule consultations, prepare quotes and provide service. With your consent we may send occasional updates and offers; you can unsubscribe at any time.</p>
+<h2>Text messages</h2><p>If you provide a mobile number, we may contact you by text message about your inquiry. Message and data rates may apply. Reply STOP to opt out at any time. We do not sell or share mobile numbers with third parties for their marketing.</p>
+<h2>Analytics</h2><p>We use analytics tools to understand how visitors use our website so we can improve it.</p>
+<h2>Contact</h2><p>Questions about this policy: <a href="mailto:<%= site.email %>"><%= site.email %></a> or <%= site.phone %>, <%= site.address.street %>, New York, NY <%= site.address.zip %>.</p>
+</div></section>
+<%- include('partials/footer') %>

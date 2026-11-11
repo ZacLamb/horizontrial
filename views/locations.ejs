@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.hero %>" alt="New York apartment with custom window treatments" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>Window Treatments Across <em>Manhattan &amp; Brooklyn</em></h1>
+    <p>From our Chelsea showroom, Horizon designers bring samples, measuring tools and 25+ years of New York experience to your door.</p>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <% ['Manhattan','Brooklyn'].forEach(b => { %>
+    <div style="margin-bottom:60px">
+      <span class="kicker"><%= b %></span><h2 class="h-sec">Neighborhoods We Serve</h2><span class="bar"></span>
+      <div class="cards c4">
+        <% neighborhoods.filter(a => a.borough === b).forEach(a => { %>
+        <a class="card" href="<%= a.url %>"><div class="body"><h3><%= a.name %></h3><p><%= a.housing.split('.')[0] %>.</p><span class="more">Window treatments in <%= a.name %> <%- include('partials/icon', { name: 'arrow' }) %></span></div></a>
+        <% }) %>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+<%- include('partials/cta') %>
+<%- include('partials/footer') %>

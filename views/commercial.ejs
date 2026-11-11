@@ -1,0 +1,35 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.hd %>" alt="" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>Commercial Window Treatments <em>in NYC</em></h1>
+    <p>Shades, blinds and drapery for offices, hospitality, healthcare and multifamily buildings &mdash; specified, measured and installed by one accountable team.</p>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap feature-grid">
+    <div class="prose">
+      <h2>One partner from spec to install</h2>
+      <p>Commercial projects need consistency across dozens or hundreds of windows, clear documentation and installers who respect building rules and tenants. Horizon has handled New York commercial work since 1999, from a single conference room to multi-floor and multi-unit rollouts.</p>
+      <div class="facts">
+        <div class="fact"><h3>We work with</h3><ul><li>Offices &amp; corporate interiors</li><li>Hotels &amp; hospitality</li><li>Property managers &amp; multifamily</li><li>Healthcare &amp; education</li><li>Architects &amp; interior designers</li></ul></div>
+        <div class="fact"><h3>Common scopes</h3><ul><li>Solar shades for glare &amp; screen comfort</li><li>Blackout for conference &amp; training rooms</li><li>Motorized banks of shades</li><li>Unit turnovers for property managers</li><li>Ripple-fold drapery for lobbies &amp; suites</li></ul></div>
+      </div>
+      <h2>How commercial projects run</h2>
+      <ul class="check">
+        <li><b>Site assessment</b> &mdash; we survey the space, exposures and existing hardware.</li>
+        <li><b>Specification &amp; samples</b> &mdash; fabric openness, colors and operating systems documented for approval.</li>
+        <li><b>Multi-unit measuring</b> &mdash; every opening measured and labeled to a schedule.</li>
+        <li><b>Coordinated installation</b> &mdash; COIs, freight elevators and after-hours work arranged with building management.</li>
+        <li><b>Service after install</b> &mdash; warranty support and one year of free service.</li>
+      </ul>
+      <h2>Property managers</h2>
+      <p>Each apartment or unit is tracked separately so you get clean invoices per unit, consistent specs across the building and fast turnaround for unit turnovers.</p>
+    </div>
+    <aside class="sticky"><%- include('partials/lead-form', { formTitle: 'Request a Commercial Assessment', formSub: 'Tell us about the space and a project manager will follow up within one business day.', interest: 'Commercial project', projectType: 'Commercial', formName: 'Commercial assessment' }) %></aside>
+  </div>
+</section>
+<%- include('partials/promise') %>
+<%- include('partials/footer') %>

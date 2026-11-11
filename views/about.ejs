@@ -1,0 +1,31 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.fabricRolls %>" alt="" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>We&rsquo;re <em>Horizon Window Treatments</em></h1>
+    <p>Serving New York City since 1999 from our showroom in Chelsea.</p>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <span class="kicker">Our Story</span><h2 class="h-sec">An Easier Way to Buy</h2><span class="bar"></span>
+      <p>Since 1999, Horizon Window Treatments has carried the highest quality products from custom window treatment brands such as <span class="brands">Hunter Douglas, Somfy, Lutron, Carole Fabrics and Graber</span>.</p>
+      <p>We make custom blinds, shades, drapery, Roman shades and shutters, plus the rods, rails and motorization that bring them together. Our products are proudly handcrafted in Brooklyn, and most arrive within about two weeks.</p>
+      <p>Our showroom is made for people who need to see and feel fabrics and materials. And our free in-home consultation brings that same experience to you: a design expert with samples, precise measurements and a clear quote.</p>
+      <div class="btn-row"><a href="/bookappointment/" class="btn btn-black">Schedule Consultation</a><a href="/contact-us/" class="btn btn-outline">Visit the Showroom</a></div>
+    </div>
+    <div class="split-img"><img src="<%= site.img.consult %>" alt="Horizon designer measuring a window in Manhattan" loading="lazy" class="ph"></div>
+  </div>
+</section>
+<section class="sec-sm sec-blush"><div class="wrap stats">
+  <div><b>1999</b><span>Founded</span></div><div><b>Brooklyn</b><span>Handcrafted</span></div><div><b>Free</b><span>Installation</span></div><div><b>Lifetime</b><span>Limited warranty</span></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="h-center"><span class="kicker">How It Works</span><h2 class="h-sec">Our Streamlined Process</h2><span class="bar"></span></div>
+  <div class="process"><% site.process.forEach((s, i) => { %><div class="step"><div class="img"><img src="<%= site.img[s.key] %>" alt="<%= s.title %>" loading="lazy" class="ph"></div><div class="body"><span class="num">0<%= i + 1 %></span><h3><%= s.title %></h3><p><%= s.text %></p></div></div><% }) %></div>
+</div></section>
+<%- include('partials/promise') %>
+<%- include('partials/footer') %>

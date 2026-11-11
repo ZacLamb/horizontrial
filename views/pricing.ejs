@@ -1,0 +1,29 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.duette %>" alt="" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>Transparent <em>Pricing</em></h1>
+    <p>Every window is custom, so every quote is too &mdash; and every quote includes professional installation.</p>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap feature-grid">
+    <div class="prose">
+      <h2>How pricing works at Horizon</h2>
+      <p>At Horizon we believe in full transparency. Your total includes installation and excludes sales tax. Estimates may change based on fabric, window size and special requests &mdash; your designer explains every line before you order.</p>
+      <div class="facts">
+        <div class="fact"><h3>Included</h3><ul><li>In-home consultation &amp; samples</li><li>Professional measuring</li><li>Professional installation</li><li>Limited lifetime warranty</li><li>One year of free service</li></ul></div>
+        <div class="fact"><h3>What affects price</h3><ul><li>Window size and quantity</li><li>Fabric and material</li><li>Lift system or motorization</li><li>Mounting conditions</li><li>Special requests</li></ul></div>
+      </div>
+      <h2>Payment</h2>
+      <p>A 50% deposit is due when you place your order and the remaining 50% after installation is complete. NYC sales tax (8.875%) applies and is not included in quoted pricing.</p>
+      <h2>Why custom costs less than you think</h2>
+      <p>Because installation is free and products are fabricated to exact measurements, there are no surprise trip charges, no returns of wrong-size stock blinds and no handyman bills. Most products arrive in about two weeks.</p>
+    </div>
+    <aside class="sticky"><%- include('partials/lead-form', { formTitle: 'Get a Quote', formSub: 'Tell us about your windows and we will call you back with pricing options.', formName: 'Pricing quote' }) %></aside>
+  </div>
+</section>
+<section class="sec sec-blush"><div class="wrap"><div class="h-center"><h2 class="h-sec">Pricing FAQs</h2><span class="bar"></span></div><%- include('partials/faq', { faqs: commonFaqs }) %></div></section>
+<%- include('partials/footer') %>

@@ -1,0 +1,16 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.drapery %>" alt="" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>Window Treatment <em>Blogs</em></h1>
+    <p>Ideas, buying guides and care tips from the Horizon team.</p>
+  </div>
+</section>
+<section class="sec"><div class="wrap"><div class="cards">
+<% const ims=[site.img.drapery, site.img.roller, site.img.blinds, site.img.roman, site.img.hd, site.img.panels]; posts.forEach((p, i) => { %>
+<a class="card" href="<%= p.url %>"><div class="img"><img src="<%= ims[i % ims.length] %>" alt="" loading="lazy" class="ph"></div><div class="body"><span class="eyebrow"><%= p.tag %></span><h3><%= p.title %></h3><p><%= p.excerpt %></p><span class="more">Read more <%- include('partials/icon', { name: 'arrow' }) %></span></div></a>
+<% }) %></div></div></section>
+<%- include('partials/cta') %>
+<%- include('partials/footer') %>

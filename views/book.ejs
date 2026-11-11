@@ -1,0 +1,35 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.consult %>" alt="" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>Schedule Your Free <em>Consultation</em></h1>
+    <p>A Horizon designer comes to you with samples, measures every window and gives you a quote. Installation is always free.</p>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap feature-grid">
+    <div class="prose">
+      <% if (calendarEmbed) { %>
+        <h2>Pick a time that works</h2>
+        <iframe src="<%= calendarEmbed %>" style="width:100%;min-height:760px;border:none;overflow:hidden" scrolling="no" title="Book a consultation"></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+      <% } else { %>
+        <h2>What happens at your consultation</h2>
+        <ul class="check">
+          <li>A designer visits your home or office at a time that suits you</li>
+          <li>You see and feel fabric and material samples in your own light</li>
+          <li>Every window is precisely measured</li>
+          <li>You get a clear quote and timeline, with installation included</li>
+          <li>No obligation &mdash; order only if you love it</li>
+        </ul>
+        <h2>Serving all of Manhattan &amp; Brooklyn</h2>
+        <div class="chips"><% neighborhoods.forEach(a => { %><a class="chip" href="<%= a.url %>"><%= a.name %></a><% }) %></div>
+      <% } %>
+    </div>
+    <aside class="sticky"><%- include('partials/lead-form', { formTitle: 'Request Your Appointment', formName: 'Book appointment' }) %></aside>
+  </div>
+</section>
+<%- include('partials/promise') %>
+<%- include('partials/footer') %>

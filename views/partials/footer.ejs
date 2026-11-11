@@ -1,0 +1,48 @@
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="logo-f"><%- include('logo', { onDark: true }) %></div>
+    <p class="tagline"><%= site.tagline %></p>
+    <div class="foot-grid">
+      <div class="foot-contact">
+        <h4>Visit Our Showroom</h4>
+        <a href="tel:<%= site.phoneTel %>" data-track="call-footer"><%- include('icon', { name: 'phone' }) %><%= site.phone %></a>
+        <a href="https://maps.google.com/?q=<%= encodeURIComponent(site.address.street + ', New York, NY ' + site.address.zip) %>" target="_blank" rel="noopener"><%- include('icon', { name: 'pin' }) %><span style="margin:0;font-size:inherit"><%= site.address.street %><br>New York, NY <%= site.address.zip %></span></a>
+        <a href="mailto:<%= site.email %>"><%- include('icon', { name: 'mail' }) %><%= site.email %></a>
+        <div class="social">
+          <% ['facebook','instagram','pinterest','linkedin'].forEach(s => { %><a href="<%= site.social[s] %>" target="_blank" rel="noopener" aria-label="<%= s %>"><%- include('icon', { name: s }) %></a><% }) %>
+        </div>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <% Object.values(categories).forEach(c => { %><li><a href="<%= c.url %>"><%= c.nav %></a></li><% }) %>
+          <li><a href="/roller-shades/">Roller Shades</a></li>
+          <li><a href="/solar-shades/">Solar Shades</a></li>
+          <li><a href="/commercial/">Commercial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Important Links</h4>
+        <ul>
+          <li><a href="/portfolio/">Our Portfolio</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/blogs/">Blogs</a></li><li><a href="/faqs/">FAQ's</a></li><li><a href="/about-us/">About Us</a></li><li><a href="/contact-us/">Contact Us</a></li><li><a href="/privacy-policy-2/">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Areas We Serve</h4>
+        <ul>
+          <% ['upper-east-side','upper-west-side','tribeca','soho','chelsea','west-village','brooklyn-heights','park-slope'].forEach(s => { const a = neighborhoods.find(x => x.slug === s); %><li><a href="<%= a.url %>"><%= a.name %></a></li><% }) %>
+          <li><a href="/locations/">All neighborhoods &rarr;</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <%= new Date().getFullYear() %> <%= site.name %>. Serving New York City since <%= site.founded %>.</span>
+      <span><a href="/privacy-policy-2/">Privacy Policy</a></span>
+    </div>
+  </div>
+</footer>
+<div class="mbar"><a href="tel:<%= site.phoneTel %>" data-track="call-mobilebar">Call <%= site.phone %></a><a href="/bookappointment/">Free Consultation</a></div>
+<script src="/js/site.js?v=1" defer></script>
+</body>
+</html>

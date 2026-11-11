@@ -1,6 +1,25 @@
 {
-  "name":"horizon-nyc-showcase", "version":"1.0.0", "private":true,
-  "scripts":{"dev":"next dev","build":"next build","start":"next start","lint":"next lint"},
-  "dependencies":{"next":"^15.3.0","react":"^19.0.0","react-dom":"^19.0.0","lucide-react":"^0.468.0"},
-  "devDependencies":{"typescript":"^5.7.3","@types/node":"^22.10.0","@types/react":"^19.0.0","@types/react-dom":"^19.0.0"}
+  "name": "horizonyc",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Horizon Window Treatments — horizonyc.com (Node/Express + EJS, Railway)",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "migrate": "node scripts/migrate-wordpress.js",
+    "check": "node scripts/check-links.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "cheerio": "^1.0.0"
+  }
 }

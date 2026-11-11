@@ -1,62 +1,47 @@
-# Horizon Window Treatments — Website Concept / SEO Platform
+# horizonyc.com — Horizon Window Treatments
 
-A polished Next.js 15 + React 19 website concept for Horizon Window Treatments, ready for GitHub and Railway. Includes **49 route URLs** from a data-driven service + neighborhood architecture, SEO metadata, JSON-LD local business schema, XML sitemap, responsive design, and consultation lead form with optional webhook integration.
+Node/Express + EJS site for GitHub → Railway auto-deploy. Same stack as our other client builds.
+Design matches the current horizonyc.com (Montserrat/Poppins, Playfair hero, Horizon red bars, black pill buttons, charcoal footer), cleaned up and built for local SEO and lead capture.
 
-## Start locally
+## What's in it (225 indexable pages)
 
-```bash
-npm install
-npm run dev
-# http://localhost:3000
+| Section | URLs | Notes |
+|---|---|---|
+| Home | `/` | Same section order as the live site + who-we-help, areas, blog |
+| Categories | `/shadesblinds/` `/drapery/` `/motorization/` `/hunter-douglas/` | **Exact existing URLs** |
+| Products (15) | `/roller-shades/` `/roman-shades/` `/solar-shades/` `/wood-blinds/` `/metal-blinds/` `/ripple-fold-drapery/` `/pinch-pleat/` `/grommet/` `/motorized-solar-roller-shades/` `/motorized-drapes/` `/motorized-roman-shades/` `/motorized-skylights/` `/duette-honeycomb-shades/` `/silhouette-shades/` `/luminette-privacy-sheers/` | **Exact existing URLs**, so rankings carry over with no redirects |
+| Areas | `/locations/` + 28 neighborhood hubs | Manhattan + Brooklyn |
+| Area × service | `/locations/<area>/<service>/` (168) | 6 services × 28 areas, advice changes by building type (pre-war / brownstone / loft / tower / mixed) |
+| Pages | `/commercial/` `/pricing/` `/portfolio/` `/faqs/` `/about-us/` `/contact-us/` `/bookappointment/` `/privacy-policy-2/` `/blogs/` | Existing URLs kept |
+| Blog (20) | `/<post-slug>/` | Existing URLs kept; content pulled in by the migration (below) |
+
+Old URLs that 301: `/our-portfolio/`, `/bookappoitment/`, `/roller-shades-privacy-light-filtering-textured/`, the dated `/2023/01/30/...` posts, and the ChatGPT prototype's `/services/...` routes. No trailing slash → 301 to the slash version (same as WordPress).
+
+All business content lives in `data/` — edit there and every page, the sitemap and the schema update.
+
+## Deploy
+
+1. New GitHub repo → upload the contents of this folder (not the folder itself).
+2. Railway → New Project → Deploy from GitHub repo. `railway.json` sets start command + `/healthz` health check.
+3. Railway → Variables (see `.env.example`):
+   - `GHL_WEBHOOK_URL` — Horizon sub-account → Automation → new workflow → trigger **Inbound Webhook** → copy URL. Every form posts: name, phone, email, interest, project_type, neighborhood, timeline, message, form_name, page, landing_page, referrer, utm_*, gclid.
+   - `GHL_CALENDAR_EMBED_URL` (optional) — puts the GHL booking calendar on `/bookappointment/`.
+   - `GA4_ID` / `GTM_ID` (optional). Forms push `generate_lead`, phone taps push `click_to_call` to the dataLayer.
+4. Generate a Railway domain and review. **The Railway domain is automatically `noindex` + robots `Disallow`** — only requests on `horizonyc.com` are indexable. Nothing to flip at launch.
+
+## Before pointing horizonyc.com DNS at Railway
+
+1. **Run the migration** — GitHub → Actions → **Migrate WordPress content** → Run workflow. It copies Horizon's photos and all 20 blog posts off WordPress into the repo at the same paths and commits them (Railway redeploys). Check `content/migration-report.json` for anything that failed.
+   - Until then, images and blog posts are served from the live WordPress site, so the preview looks right today.
+   - WordPress has a bot challenge on its API. If the Action reports posts as "blocked", run `npm run migrate` from any machine with a normal connection, or whitelist the GitHub runner in the host's firewall for a few minutes.
+2. Export the full URL list from WordPress / Search Console and compare against the table above. Add any stragglers to the `redirects` map in `server.js`.
+3. Set `SITE_URL=https://horizonyc.com`, point DNS, submit `/sitemap.xml` in Search Console.
+
+## Commands
+
 ```
-
-## Deploy on GitHub + Railway
-
-1. Extract the ZIP. In GitHub create a new repository and upload the **contents of the folder** to the repository root (including `app/`, `components/`, `lib/`, and `package.json`).
-2. In Railway select **New Project → Deploy from GitHub Repo**, then select the repository.
-3. Railway will recognize Next.js automatically. Set Node.js 20+ (recommended 22). Build: `npm run build`; start: `npm run start`.
-4. Generate a Railway domain in **Settings → Networking**. Your demo is live on the Railway URL.
-5. To configure the public site (only after client approval and migration planning), set `NEXT_PUBLIC_SITE_URL=https://horizonyc.com` and connect the custom domain. Until then use the Railway demo domain. The preview defaults to noindex via `SITE_PREVIEW_MODE=true` (implicit default). Set `SITE_PREVIEW_MODE=false` only for approved production launch.
-6. Set `LEADS_WEBHOOK_URL` to a **trusted server-side** webhook (GHL, Make, Zapier or a custom API) to activate form delivery. Optionally set `LEADS_WEBHOOK_AUTH`. Without this value the form explicitly reports **demo mode** and no lead is sent.
-
-## Before sending live traffic
-
-- **Photography is illustrative.** Unsplash remote photographs used as visual placeholders; they are NOT verified projects by Horizon. Replace them with rights-cleared Horizon installation and showroom photography. Images are currently loaded from remote Unsplash URLs; an internet connection is needed to display them.
-- Confirm service areas, warranties, installation claims, brands and client details before publishing.
-- Audit every existing WordPress URL and set appropriate 301 redirects or preserve URLs before migration. Common legacy paths are redirected in `next.config.ts`, but this is still a design prototype, **not a production-safe full migration of the existing WordPress site**. Audit all legacy URLs against Search Console before publishing.
-- Do not turn on indexing for the Railway preview; canonical tags default to `horizonyc.com`, but add password protection / noindex if sharing a public preview widely.
-- Form delivery requires webhook setup and spam protection / rate limiting appropriate for production. Existing booking calendars and consent flows are not imported. Add any required privacy, legal, accessibility and marketing consent disclosures.
-- This demo intentionally avoids invented reviews, fabricated project case studies, false price lists or unverifiable ranking claims.
-- Use Google Search Console / GA4 and map-service data to confirm which additional neighborhood/service combinations deserve indexation; don't publish hundreds of near-duplicate pages.
-- Google Search Console verification, GA4, call tracking, CRM opportunity/revenue attribution and actual image migration remain follow-on integration tasks.
-
-## Content editing
-
-All services, neighborhoods, 20 selected geographic combinations and guides are maintained in `lib/data.ts`. Updating the arrays updates page generation, internal links and sitemap automatically.
-
-### Routing
-
-- `/` home
-- `/services` + `/services/[slug]` service pages
-- `/locations` + `/locations/[slug]` area hubs
-- `/locations/[slug]/[service]` curated local service SEO pages
-- `/commercial`, `/portfolio`, `/about`, `/contact`
-- `/insights` + `/insights/[slug]` informational guides
-- `/sitemap.xml`, `/robots.txt`
-
-## Existing site details retained
-
-- Horizon red-and-white brand identity
-- Established 1999 positioning
-- 133 West 24th Street, New York, NY 10011
-- (212) 759-4111, customer@horizonyc.com
-- Core services: shades, blinds, drapery, motorization, Hunter Douglas
-- Complimentary in-home consultations and installation emphasis
-
-## SEO and migration note
-
-An existing WordPress site can have ranking URLs that don't exist in this new build. Export URLs from WordPress, the old sitemap and GSC, then add route redirects in `next.config.ts` or make the equivalent URLs directly accessible before changing the domain's DNS. Existing rank signals should be preserved wherever feasible.
-
-## License
-
-This is a custom presentation prototype. Verify your rights to use supplied business branding and replace all stock photography with client-owned or appropriately licensed assets before public release.
+npm install
+npm run dev        # http://localhost:3000
+npm run check      # crawls the sitemap on a running server and reports any non-200 / broken internal link
+npm run migrate    # pull images + blog posts from WordPress
+```

@@ -1,0 +1,49 @@
+<%- include('partials/head', { ogImage: s.img }) %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= s.img %>" alt="<%= s.name %> in <%= a.name %>" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <span class="eyebrow"><%= a.name %>, <%= a.borough %></span>
+    <h1><%= s.name %> in <em><%= a.name %></em></h1>
+    <p>Custom <%= s.name.toLowerCase() %> for <%= a.name %> apartments, townhouses and offices &mdash; <%= s.angle %>. Measured and installed free by Horizon.</p>
+    <div class="btn-row" style="margin-top:26px"><a href="#consult" class="btn btn-white">Get a Free Quote</a><a href="tel:<%= site.phoneTel %>" class="btn btn-ghost" data-track="call-hero">Call <%= site.phone %></a></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap feature-grid">
+    <div class="prose">
+      <h2><%= s.name %> for <%= a.name %> windows</h2>
+      <p><%= a.housing %></p>
+      <div class="tip"><strong>Our advice for <%= a.name %></strong><%= tip %></div>
+      <p><%= a.light %></p>
+      <% if (relatedProducts.length) { %>
+      <h2><%= s.name %> options</h2>
+      <div class="cards c2" style="margin-top:20px">
+        <% relatedProducts.slice(0,4).forEach(p => { %><a class="card" href="<%= p.url %>"><div class="img"><img src="<%= p.img %>" alt="<%= p.title %>" loading="lazy" class="ph"></div><div class="body"><h3><%= p.title %></h3><p><%= p.lede %></p><span class="more">See options <%- include('partials/icon', { name: 'arrow' }) %></span></div></a><% }) %>
+      </div>
+      <% } %>
+      <h2>What to expect</h2>
+      <ul class="check">
+        <li>A designer visits your <%= a.name %> home with samples and measures every window</li>
+        <li>A clear quote with installation included (NYC sales tax added separately)</li>
+        <li>Fabrication in about two weeks; two to three weeks for motorized projects</li>
+        <li>Installation coordinated with your building&rsquo;s management and work rules</li>
+      </ul>
+      <p>Prefer to see materials first? Visit our showroom at <%= site.address.street %> in Chelsea, or <a href="<%= s.url %>">read more about <%= s.name.toLowerCase() %></a>.</p>
+    </div>
+    <aside class="sticky"><%- include('partials/lead-form', { formTitle: s.name + ' in ' + a.name, formSub: 'Free in-home consultation and measuring. Installation included.', interest: s.name, areaName: a.name, showMessage: false, formName: 'Location service – ' + s.name + ' – ' + a.name }) %></aside>
+  </div>
+</section>
+<section class="sec sec-blush">
+  <div class="wrap"><div class="h-center"><h2 class="h-sec"><%= s.name %> in <%= a.name %>: FAQs</h2><span class="bar"></span></div><%- include('partials/faq', { faqs }) %></div>
+</section>
+<section class="sec-sm">
+  <div class="wrap" style="text-align:center">
+    <p class="boro">More in <%= a.name %></p>
+    <div class="chips" style="justify-content:center;margin-bottom:28px"><% otherServices.forEach(o => { %><a class="chip" href="<%= a.url %><%= o.key %>/"><%= o.name %></a><% }) %><a class="chip" href="<%= a.url %>">All <%= a.name %> services</a></div>
+    <% if (nearby.length) { %><p class="boro"><%= s.name %> nearby</p><div class="chips" style="justify-content:center"><% nearby.forEach(n => { %><a class="chip" href="<%= n.url %><%= s.key %>/"><%= s.name %> <%= n.name %></a><% }) %></div><% } %>
+  </div>
+</section>
+<%- include('partials/cta', { interest: s.name, areaName: a.name }) %>
+<%- include('partials/footer') %>

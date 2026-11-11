@@ -1,0 +1,46 @@
+<div class="topbar">
+  <div class="wrap">
+    <span>Need Help?</span>
+    <a href="/contact-us/"><strong>Contact Us :</strong></a>
+    <a href="tel:<%= site.phoneTel %>" data-track="call-topbar"><%- include('icon', { name: 'phone' }) %><%= site.phone %></a>
+    <a href="https://maps.google.com/?q=<%= encodeURIComponent(site.address.street + ', New York, NY ' + site.address.zip) %>" target="_blank" rel="noopener"><%- include('icon', { name: 'pin' }) %>Showroom: <%= site.address.street %>, New York, NY <%= site.address.zip %></a>
+    <a href="<%= site.googleReviews %>" target="_blank" rel="noopener"><%- include('icon', { name: 'google' }) %>Google - Our Happy Customers</a>
+  </div>
+</div>
+<header class="header" id="header">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="Horizon Window Treatments home"><%- include('logo') %></a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <% ['shadesblinds','drapery','motorization','hunter-douglas'].forEach(k => { const c = categories[k]; %>
+        <li><a href="<%= c.url %>" class="<%= path === c.url || c.items.some(i => i.url === path) ? 'active' : '' %>"><%= c.nav %></a>
+          <ul class="dd">
+            <% c.items.forEach(i => { %><li><a href="<%= i.url %>"><%= i.title %></a></li><% }) %>
+          </ul>
+        </li>
+        <% }) %>
+        <li><a href="/commercial/" class="<%= path === '/commercial/' ? 'active' : '' %>">Commercial</a></li>
+        <li><a href="/pricing/" class="<%= path === '/pricing/' ? 'active' : '' %>">Pricing</a></li>
+        <li><a href="/portfolio/" class="<%= path === '/portfolio/' ? 'active' : '' %>">Our Portfolio</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a class="header-phone" href="tel:<%= site.phoneTel %>" data-track="call-header"><%= site.phone %></a>
+      <a class="btn btn-black" href="/bookappointment/">Schedule Consultation</a>
+      <button class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-label="Menu">
+    <button class="drawer-close" aria-label="Close menu">&times;</button>
+    <% ['shadesblinds','drapery','motorization','hunter-douglas'].forEach(k => { const c = categories[k]; %>
+      <h4><a href="<%= c.url %>" style="border:0;padding:0;color:inherit"><%= c.nav %></a></h4>
+      <% c.items.forEach(i => { %><a href="<%= i.url %>"><%= i.title %></a><% }) %>
+    <% }) %>
+    <h4>Horizon</h4>
+    <a href="/commercial/">Commercial</a><a href="/pricing/">Pricing</a><a href="/portfolio/">Our Portfolio</a><a href="/locations/">Areas We Serve</a><a href="/about-us/">About Us</a><a href="/faqs/">FAQ's</a><a href="/blogs/">Blogs</a><a href="/contact-us/">Contact Us</a>
+    <a class="btn btn-black" href="/bookappointment/">Schedule Consultation</a>
+  </div>
+</div>
+<main id="main">

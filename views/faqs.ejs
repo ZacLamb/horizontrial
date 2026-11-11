@@ -1,0 +1,14 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= site.img.consult %>" alt="" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <h1>Frequently Asked <em>Questions</em></h1>
+    <p>Everything you need to know about consultations, installation, payment and warranties.</p>
+  </div>
+</section>
+<section class="sec"><div class="wrap"><%- include('partials/faq', { faqs }) %>
+<p style="text-align:center;margin-top:40px">Still have a question? Call <a href="tel:<%= site.phoneTel %>"><%= site.phone %></a> or <a href="/contact-us/">send us a message</a>.</p></div></section>
+<%- include('partials/cta') %>
+<%- include('partials/footer') %>

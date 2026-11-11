@@ -1,0 +1,64 @@
+<%- include('partials/head', { ogImage: p.img }) %>
+<%- include('partials/header') %>
+<section class="phero">
+  <img src="<%= p.img %>" alt="<%= p.title %> installed in a New York home" class="ph">
+  <div class="wrap">
+    <%- include('partials/crumbs') %>
+    <span class="eyebrow"><%= cat.nav %></span>
+    <h1><%= p.title %> <em>in NYC</em></h1>
+    <p><%= p.lede %></p>
+    <div class="btn-row" style="margin-top:26px"><a href="#consult" class="btn btn-white">Get a Free Quote</a><a href="tel:<%= site.phoneTel %>" class="btn btn-ghost" data-track="call-hero">Call <%= site.phone %></a></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap feature-grid">
+    <div class="prose">
+      <% p.sections.forEach(s => { %><h2><%= s.h %></h2><p><%= s.p %></p><% }) %>
+      <div class="facts">
+        <div class="fact"><h3>Options</h3><ul><% p.features.forEach(f => { %><li><%= f %></li><% }) %></ul></div>
+        <div class="fact"><h3>Best for</h3><ul><% p.bestFor.forEach(f => { %><li><%= f %></li><% }) %></ul></div>
+      </div>
+      <% if (p.gallery && p.gallery.length > 1) { %>
+      <div class="gallery g3" style="margin-top:10px"><% p.gallery.slice(0,3).forEach(g => { %><figure><img src="<%= g %>" alt="<%= p.title %> NYC" loading="lazy" class="ph"></figure><% }) %></div>
+      <% } %>
+      <h2>Why New Yorkers choose Horizon</h2>
+      <ul class="check">
+        <li>Serving Manhattan and Brooklyn since 1999 from our Chelsea showroom</li>
+        <li>Free in-home consultation with samples and precise measuring</li>
+        <li>Free professional installation by Horizon&rsquo;s vetted installers</li>
+        <li>Limited lifetime warranty plus one year of free service</li>
+      </ul>
+    </div>
+    <aside class="sticky">
+      <%- include('partials/lead-form', { formTitle: 'Get a Free ' + p.title + ' Quote', interest: (svc && svc.name) || '', showMessage: false, formName: 'Product page – ' + p.title }) %>
+    </aside>
+  </div>
+</section>
+
+<% if (related.length) { %>
+<section class="sec sec-blush">
+  <div class="wrap">
+    <div class="h-center"><span class="kicker">More</span><h2 class="h-sec"><%= cat.nav %></h2><span class="bar"></span></div>
+    <div class="cards <%= related.length >= 4 ? 'c4' : related.length === 2 ? 'c2' : '' %>">
+      <% related.forEach(r => { %><a class="card" href="<%= r.url %>"><div class="img"><img src="<%= r.img %>" alt="<%= r.title %>" loading="lazy" class="ph"></div><div class="body"><h3><%= r.title %></h3><p><%= r.lede %></p><span class="more">Explore <%- include('partials/icon', { name: 'arrow' }) %></span></div></a><% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<% if (svc) { %>
+<section class="sec-sm">
+  <div class="wrap">
+    <h2 class="h-sec h-center" style="font-size:22px"><%= svc.name %> by neighborhood</h2><span class="bar c"></span>
+    <div class="chips" style="justify-content:center"><% neighborhoods.forEach(a => { %><a class="chip" href="<%= a.url %><%= svc.key %>/"><%= a.name %></a><% }) %></div>
+  </div>
+</section>
+<% } %>
+
+<section class="sec">
+  <div class="wrap"><div class="h-center"><h2 class="h-sec"><%= p.title %> FAQs</h2><span class="bar"></span></div><%- include('partials/faq', { faqs: p.faqs }) %></div>
+</section>
+<%- include('partials/cta', { interest: (svc && svc.name) || '' }) %>
+<%- include('partials/promise') %>
+<%- include('partials/footer') %>

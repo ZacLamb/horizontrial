@@ -1,0 +1,9 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="sec"><div class="wrap narrow" style="text-align:center">
+  <span class="kicker">404</span><h1 class="h-sec">We couldn&rsquo;t find that page</h1><span class="bar c"></span>
+  <p class="lead">It may have moved. Try one of these instead:</p>
+  <div class="chips" style="justify-content:center;margin:20px 0 30px"><% Object.values(categories).forEach(c => { %><a class="chip" href="<%= c.url %>"><%= c.nav %></a><% }) %><a class="chip" href="/portfolio/">Portfolio</a><a class="chip" href="/locations/">Areas We Serve</a></div>
+  <a href="/bookappointment/" class="btn btn-black">Schedule Consultation</a>
+</div></section>
+<%- include('partials/footer') %>
