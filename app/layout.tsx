@@ -1,0 +1,6 @@
+import type {Metadata} from 'next';
+import {Header,Footer} from '@/components/Site';
+import {site} from '@/lib/data';
+import './globals.css';
+export const metadata:Metadata={metadataBase:new URL(site.url),title:{default:'Custom Window Treatments NYC | Horizon Window Treatments',template:'%s | Horizon Window Treatments'},description:'Custom shades, motorized blinds and bespoke drapery in New York City. Serving Manhattan & Brooklyn since 1999. Complimentary in-home design consultations.',openGraph:{type:'website',siteName:site.name,locale:'en_US'},robots:process.env.SITE_PREVIEW_MODE==='false'?{index:true,follow:true}:{index:false,follow:false}};
+export default function RootLayout({children}:{children:React.ReactNode}){const schema={'@context':'https://schema.org','@type':'HomeAndConstructionBusiness',name:site.name,url:site.url,telephone:site.phoneRaw,email:site.email,foundingDate:'1999',address:{'@type':'PostalAddress',streetAddress:site.address,addressLocality:site.city,addressRegion:site.state,postalCode:site.zip,addressCountry:'US'},areaServed:[{'@type':'Place',name:'Manhattan, New York'},{'@type':'Place',name:'Brooklyn, New York'}]};return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/><Header/><main>{children}</main><Footer/></body></html>}

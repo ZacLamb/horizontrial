@@ -1,0 +1,1 @@
+import type {MetadataRoute} from 'next';import {site} from '@/lib/data';export default function robots():MetadataRoute.Robots{return process.env.SITE_PREVIEW_MODE==='false'?{rules:[{userAgent:'*',allow:'/',disallow:['/api/']}],sitemap:site.url.replace(/\/$/,'')+'/sitemap.xml'}:{rules:[{userAgent:'*',disallow:'/'}]}}
